@@ -1,5 +1,5 @@
 from app.data.knight_parameters import KNIGHTS
-from app.knight.knight import Knight
+from app.knight.knights import Knight
 
 
 def battle(knights: dict) -> dict:
@@ -16,10 +16,7 @@ def battle(knights: dict) -> dict:
     lancelot.battle(mordred)
     arthur.battle(red_knight)
 
-    return {lancelot.name: lancelot.hp,
-            arthur.name: arthur.hp,
-            mordred.name: mordred.hp,
-            red_knight.name: red_knight.hp}
+    return Knight.get_name_hp_all_knights()
 
 
-battle(KNIGHTS)
+print(battle(KNIGHTS))
