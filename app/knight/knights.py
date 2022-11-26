@@ -46,7 +46,6 @@ class Knight:
     def get_protection(self) -> int:
         return self._protection
 
-
     def set_power(self, power: int) -> None:
         self._power = power
 
@@ -77,7 +76,8 @@ class Knight:
     def apply_armour(self) -> None:
         self.set_armour(self.get_armour())
         for armour in self.get_armour():
-            self.set_protection(self.get_protection() + armour.get_protection())
+            self.set_protection(
+                self.get_protection() + armour.get_protection())
 
     def apply_weapon(self) -> None:
         self.set_weapon(self.get_weapon())
@@ -91,7 +91,8 @@ class Knight:
                 self.set_power(self.get_power() + potion_effects["power"])
 
             if "protection" in potion_effects:
-                self.set_protection(self.get_protection() + potion_effects["protection"])
+                self.set_protection(
+                    self.get_protection() + potion_effects["protection"])
 
             if "hp" in potion_effects:
                 self.set_hp(self.get_hp() + potion_effects["hp"])
