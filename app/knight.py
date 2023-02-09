@@ -26,7 +26,7 @@ class Knight:
         self.__armour = armour
         self.__potion = potion
 
-        self.__class__.__all_knights.append(self)
+        Knight.__all_knights.append(self)
 
     def get_name(self) -> str:
         return self.__name
