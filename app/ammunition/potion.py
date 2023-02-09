@@ -8,15 +8,3 @@ class Potion:
 
     def get_effect(self) -> dict:
         return self.__effect
-
-    def change_hp(self) -> None:
-        pass
-
-    def change_power(self) -> None:
-        pass
-
-    def change_protection(self) -> None:
-        pass
-
-    def activate(self):
-        pass

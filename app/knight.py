@@ -6,6 +6,8 @@ from app.ammunition.weapon import Weapon
 
 
 class Knight:
+    __all_knights = []
+
     def __init__(
             self,
             name: str,
@@ -23,6 +25,8 @@ class Knight:
         self.__weapon = weapon
         self.__armour = armour
         self.__potion = potion
+
+        self.__all_knights.append(self)
 
     def get_name(self) -> str:
         return self.__name
@@ -50,7 +54,14 @@ class Knight:
                                   for armour in self.__armour])
 
     def __apply_potion(self) -> None:
-        self.__potion.activate()
+        effects = self.__potion.get_effect()
+        # print(effects)
+        if "power" in effects:
+            self.__power += effects["power"]
+        if "hp" in effects:
+            self.__hp += effects["hp"]
+        if "protection" in effects:
+            self.__protection += effects["protection"]
 
     def __appy_weapon(self) -> None:
         self.__power += self.__weapon.get_power()
@@ -71,3 +82,7 @@ class Knight:
         elif self.__power >= other.__protection:
             other.__hp -= self.__power - other.__protection
             other.__protection = 0
+
+    @classmethod
+    def get_hp_all_knights(cls) -> dict[str: int]:
+        return {knight.__name: knight.__hp for knight in cls.__all_knights}
