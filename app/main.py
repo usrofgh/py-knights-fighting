@@ -30,19 +30,20 @@ def create_knights(knights: dict) -> {Knight}:
     return knights_dict
 
 
+def duel(knight1: Knight, knight2: Knight) -> None:
+    knight1.hit(knight2)
+    knight2.hit(knight1)
+
+
 def battle(knights_config: dict) -> {}:
     knights = create_knights(knights_config)
     [knight.prepare_for_battle() for knight in knights.values()]
-    lancelot = knights["Lancelot"]
-    mordred = knights["Mordred"]
-    arthur = knights["Artur"]
-    red_knight = knights["Red Knight"]
-
-    lancelot.hit(mordred)
-    mordred.hit(lancelot)
-
-    arthur.hit(red_knight)
-    red_knight.hit(arthur)
+    participants = {
+        knights["Lancelot"]: knights["Mordred"],
+        knights["Artur"]: knights["Red Knight"]
+    }
+    [duel(participant1, participant2)
+     for participant1, participant2 in participants.items()]
 
     return Knight.get_hp_all_knights()
 
