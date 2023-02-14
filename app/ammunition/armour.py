@@ -1,10 +1,12 @@
 class Armour:
     def __init__(self, part: str, protection: int) -> None:
-        self.__part = part
-        self.__protection = protection
+        self._part = part
+        self._protection = protection
 
-    def get_name(self) -> str:
-        return self.__part
+    @property
+    def name(self) -> str:
+        return self._part
 
-    def get_protection(self) -> int:
-        return self.__protection
+    @property
+    def protection(self) -> int:
+        return self._protection
