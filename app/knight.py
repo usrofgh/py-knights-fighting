@@ -25,6 +25,7 @@ class Knight:
         self._weapon = weapon
         self._armour = armour
         self._potion = potion
+        self.prepare_for_battle()
 
         Knight._all_knights.append(self)
 

@@ -37,7 +37,6 @@ def duel(knight1: Knight, knight2: Knight) -> None:
 
 def battle(knights_config: dict) -> {}:
     knights = create_knights(knights_config)
-    [knight.prepare_for_battle() for knight in knights.values()]
     participants = {
         knights["Lancelot"]: knights["Mordred"],
         knights["Artur"]: knights["Red Knight"]
