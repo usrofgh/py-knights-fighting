@@ -14,8 +14,8 @@ def create_knights(knights: dict) -> {Knight}:
         power = params["power"]
         hp = params["hp"]
 
-        armour = [Armour(arm["part"], arm["protection"])
-                  for arm in params["armour"]]
+        armour = [Armour(armour["part"], armour["protection"])
+                  for armour in params["armour"]]
 
         weapon = Weapon(params["weapon"]["name"],
                         params["weapon"]["power"])
