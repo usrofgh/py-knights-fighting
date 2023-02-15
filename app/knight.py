@@ -58,18 +58,15 @@ class Knight:
         return self._potion
 
     def _apply_armour(self) -> None:
-        self._protection += sum([armour.protection
-                                for armour in self._armour])
+        self._protection += sum(armour.protection
+                                for armour in self._armour)
 
     def _apply_potion(self) -> None:
-        effects = self._potion.effect
-        # print(effects)
-        if "power" in effects:
-            self._power += effects["power"]
-        if "hp" in effects:
-            self._hp += effects["hp"]
-        if "protection" in effects:
-            self._protection += effects["protection"]
+        for effect in self.potion.effect:
+            protected_effect = "_" + effect
+            new_value = (getattr(self, protected_effect)
+                         + self.potion.effect[effect])
+            setattr(self, protected_effect, new_value)
 
     def _appy_weapon(self) -> None:
         self._power += self._weapon.power
